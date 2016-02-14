@@ -1,8 +1,12 @@
+
 neo4j:
     image: neo4j
     ports:
-        - 7474:7474
+      - 7474:7474
     environment:
-        NEO4J_AUTH: neo4j/whipy
-    volumes:
-        - $HOME/neo4j/data:/data
+      NEO4J_AUTH: neo4j/workify
+
+# redis:
+#     image: redis
+#     ports:
+#       - "6379:6379"
