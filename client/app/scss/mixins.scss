@@ -1,0 +1,151 @@
+//========================================== 
+// Project mixins
+//==========================================
+@mixin box-sizing() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin border-radius($args) {
+	-webkit-border-radius: $args;
+	-moz-border-radius: $args;
+	-ms-border-radius: $args;
+	-o-border-radius: $args;
+	border-radius: $args;
+}
+
+@mixin box-shadow($args) {
+	-webkit-box-shadow: $args;
+	-moz-box-shadow: $args;
+	-ms-box-shadow: $args;
+	-o-box-shadow: $args;
+	box-shadow: $args;
+}
+
+@mixin text-shadow($args) {
+	-webkit-text-shadow: $args;
+	-moz-text-shadow: $args;
+	-ms-text-shadow: $args;
+	-o-text-shadow: $args;
+	text-shadow: $args;
+}
+
+@mixin blur($args) {
+	-webkit-filter: blur($args);
+	-moz-filter: blur($args);
+	-ms-filter: blur($args);
+	-o-filter: blur($args);
+	filter: blur($args);
+}
+
+@mixin transition-blur($prop, $duration, $ease, $delay) {
+	-webkit-transition: -webkit- + $prop $duration $ease $delay;
+	-moz-transition: -moz- + $prop $duration $ease $delay;
+	-ms-transition: -ms- + $prop $duration $ease $delay;
+  -o-transition: -o- + $prop $duration $ease $delay;
+}
+
+@mixin translate-3D($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+	-moz-transform: translate3d($x, $y, $z);
+	-ms-transform: translate3d($x, $y, $z);
+	-o-transform: translate3d($x, $y, $z);
+	transform: translate3d($x, $y, $z);
+}
+
+@mixin scale($args) {
+	-webkit-transform: scale($args);
+	-moz-transform: scale($args);
+	-ms-transform: scale($args);
+  -o-transform: scale($args);
+  transform: scale($args);
+}
+
+@mixin translate-2D($translateX, $translateY) {
+	-webkit-transform: translate($translateX, $translateY);
+	-moz-transform: translate($translateX, $translateY);
+	-ms-transform: translate($translateX, $translateY);
+	-o-transform: translate($translateX, $translateY);
+	transform: translate($translateX, $translateY);
+}
+
+@mixin rotate($deg) {
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-ms-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+@mixin transition($prop, $duration, $ease, $delay) {
+	-webkit-transition: $prop $duration $ease $delay;
+	-moz-transition: $prop $duration $ease $delay;
+	-ms-transition: $prop $duration $ease $delay;
+  -o-transition: $prop $duration $ease $delay;
+  transition: $prop $duration $ease $delay;
+}
+
+@mixin transition-CSS3($prop, $duration, $ease, $delay) {
+	-webkit-transition: -webkit- + $prop $duration $ease $delay;
+	-moz-transition: -moz- + $prop $duration $ease $delay;
+	-ms-transition: -ms- + $prop $duration $ease $delay;
+  -o-transition: -o- + $prop $duration $ease $delay;
+  transition: $prop $duration $ease $delay;
+}
+
+@mixin background-linear-gradient($startColor, $startColorPositon, $finalColor, $finalColorPosition) {
+	background: -webkit-linear-gradient(top, $startColor $startColorPositon, $finalColor $finalColorPosition);
+	background: -moz-linear-gradient(top, $startColor $startColorPositon, $finalColor $finalColorPosition);
+	background: -ms-linear-gradient(top, $startColor $startColorPositon, $finalColor $finalColorPosition);
+	background: -o-linear-gradient(top, $startColor $startColorPositon, $finalColor $finalColorPosition);
+	background: linear-gradient(to bottom, $startColor $startColorPositon, $finalColor $finalColorPosition);
+}
+
+@mixin font-smoothing() {
+	-webkit-text-size-adjust: none;
+  -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	-webkit-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+	-moz-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+	-ms-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+	-o-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+	-webkit-text-stroke: 1px transparent;
+	-moz-text-stroke: 1px transparent;
+	-ms-text-stroke: 1px transparent;
+	-o-text-stroke: 1px transparent;
+	text-stroke: 1px transparent;
+	text-rendering: optimizeLegibility;
+}
+
+@mixin background-image-retina($color, $file, $type, $repeat, $width, $height, $position) {
+  	background: $color url($file + '.' + $type) $repeat $position;
+  	@media 
+	  	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	    only screen and (min-device-pixel-ratio: 1.5),
+	    only screen and (min-resolution: 163dpi),
+	    only screen and (min-resolution: 1.33dppx) {
+	    & {
+			background-image: url($file + '-@2x.' + $type);
+			-webkit-background-size: $width $height;
+			-moz-background-size: $width $height;
+			-o-background-size: $width $height;
+			background-size: $width $height;
+	    }
+	  }
+}
+
+@mixin grid-width($grid) {
+	width: percentage((1 / $totalColumns) * $grid);
+}
+
+@mixin grid-offset($gridOffset) {
+	margin-left: if($gridOffset == 0, 0, percentage((1 / $totalColumns) * $gridOffset));
+}

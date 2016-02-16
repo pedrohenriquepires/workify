@@ -1,0 +1,90 @@
+//========================================== 
+// Grid
+//==========================================
+
+.container {
+	padding-left: $defaultPadding;
+	padding-right: $defaultPadding;
+	@include box-sizing();
+}
+
+.row {
+	margin-left: -$defaultMargin;
+	margin-right: -$defaultMargin;
+}
+
+.row, 
+.clearfix {
+	&:before, 
+	&:after {
+		content: '';
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.col {
+	@include box-sizing();
+	padding-left: $defaultPadding;
+	padding-right: $defaultPadding;
+	float: left;	
+}
+
+@for $i from 1 through $totalColumns {
+	.col-s-#{$i} { 
+		@include grid-width($i);
+	}
+}
+
+@for $i from 0 through $totalColumns {
+	.col-s-offset-#{$i} { 
+		@include grid-offset($i);
+	}
+}
+
+
+//========================================== 
+// Responsive grid tablet
+//==========================================
+
+@media (min-width: 480px) {
+
+	@for $i from 1 through $totalColumns {
+		.col-m-#{$i} { 
+			@include grid-width($i);
+		}
+	}
+
+	@for $i from 0 through $totalColumns {
+		.col-m-offset-#{$i} { 
+			@include grid-offset($i);
+		}
+	}
+
+}
+
+//========================================== 
+// Responsive grid desktop
+//==========================================
+
+@media (min-width: 960px) {
+
+	@for $i from 1 through $totalColumns {
+  
+	  .col-l-#{$i} { 
+	  	@include grid-width($i);
+	  }
+
+	}
+
+	@for $i from 0 through $totalColumns {
+	  
+	  .col-l-offset-#{$i} { 
+	  	@include grid-offset($i);
+	  }
+
+	}
+
+}
