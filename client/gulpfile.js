@@ -103,17 +103,11 @@ gulp.task("sass", pipes.compileSass)
 	.task("minify-lib-styles", pipes.minifyLibStyles)
 	.task("copy-views", pipes.copyViews)
 	.task("move-images", pipes.moveImages)
-	.task("index-injector", ["sass", "compress-app", "compress-lib", "minify-lib-styles", "copy-views"], pipes.indexInjector)
+	.task("index-injector", ["sass", "compress-app", "compress-lib", "minify-lib-styles", "copy-views", "move-images"], pipes.indexInjector)
 	.task("index-injector-only", pipes.indexInjector);
 
 gulp.task("default", [
-	"sass",
-	"compress-app", 
-	"compress-lib", 
-	"minify-lib-styles", 
-	"copy-views",
-	"index-injector",
-	"move-images"
+	"index-injector"
 ]);
 
 gulp.task('watch-sass', function() {
